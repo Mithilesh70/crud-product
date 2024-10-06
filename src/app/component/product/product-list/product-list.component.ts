@@ -36,12 +36,11 @@ export default class ProductListComponent {
     ProductManageComponent
   >;
   deleteDialogRef!: DialogRef<boolean, ConfirmationComponent>;
-  isListVisible = false;
   stateOptions: any[] = [
     { label: 'List', value: true },
     { label: 'Chart', value: false },
   ];
-  value = true;
+  isListVisible = true;
 
   constructor(
     private productService: ProductService,

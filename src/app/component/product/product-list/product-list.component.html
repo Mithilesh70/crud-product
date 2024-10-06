@@ -2,14 +2,14 @@
   <div class="d-flex justify-content-center align-items-center py-2">
     <p-selectButton
       [options]="stateOptions"
-      [(ngModel)]="value"
+      [(ngModel)]="isListVisible"
       optionLabel="label"
       optionValue="value"
     ></p-selectButton>
   </div>
 
   <div class="row mt-3">
-    @if (value) {
+    @if (isListVisible) {
 
     <div class="col-12">
       <div class="card">

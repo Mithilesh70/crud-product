@@ -37,19 +37,20 @@ export class ProductService {
     });
   }
 
-  getChartData() {
-    const result: any = this.productsData().reduce((acc: any, product: any) => {
-      const { productCategory, productPrice } = product;
-      const category: any = acc.find(
-        (item: any) => item.name === productCategory
-      );
-      if (category) {
-        category.value += productPrice;
-      } else {
-        acc.push({ name: productCategory, value: productPrice });
-      }
-      return acc;
-    }, []);
+  getChartData(): { name: string; value: number }[] {
+    const result = this.productsData().reduce(
+      (acc: { name: string; value: number }[], product: ProductDetails) => {
+        const { productCategory, productPrice } = product;
+        const category = acc.find((item) => item.name === productCategory);
+        if (category) {
+          category.value += productPrice;
+        } else {
+          acc.push({ name: productCategory, value: productPrice });
+        }
+        return acc;
+      },
+      []
+    );
 
     return result;
   }
